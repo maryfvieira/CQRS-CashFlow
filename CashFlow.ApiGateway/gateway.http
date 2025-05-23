@@ -1,0 +1,52 @@
+@Gateway_HostAddress = http://localhost:5079
+@Identity_HostAddress = http://localhost:5000/api/v1/identity
+@TransactionApi_HostAddress = http://localhost:5010/api/v1/transaction
+@ConsolidationApi_HostAddress = http://localhost:5012/api/v1/consolidation
+
+### ✅ Gerar token (ajuste para sua rota do Identity API)
+POST {{Identity_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "username": "funcionario1",
+  "password": "123456"
+}
+
+###
+
+# Copie o token JWT retornado acima, substitua abaixo.
+@token = eyJhbGciOiJIUzI1NiIsInRJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZnVuY2lvbmFyaW8xIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiZnVuY2lvbmFyaW8xQGVtcHJlc2EuY29tIiwianRpIjoiN2E1NjdhODgtMTY2ZC00NzE4LWJlZGQtNDE1NGMyNzRlMmM5IiwiaWF0IjoxNzQ1MTk0NzcwLCJpc3MiOiJodHRwczovL2FwaS5vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJ1c2VyIiwibmJmIjoxNzQ1MTk0NzcwLCJleHAiOjE3NDUyMDE5NzAsImF1ZCI6Imh0dHBzOi8vYXBwLmNhc2hmbG93LnlvdXItZG9tYWluLmNvbSJ9.fy9rip3SCK3-cEXFWjX2EUtP5-nQGrAg4gDbMxqe2zI
+
+### 🔐 Testar rota da Transaction API - Inflow (via Gateway com token)
+POST {{Gateway_HostAddress}}/inflow
+Authorization: Bearer {{token}}
+
+###
+
+### 🔐 Testar rota da Transaction API - Outflow (via Gateway com token)
+POST {{Gateway_HostAddress}}/outflow
+Authorization: Bearer {{token}}
+
+###
+
+### ❌ Testar rota sem token Transaction API - Inflow (deve retornar 401)
+POST {{Gateway_HostAddress}}/inflow
+
+###
+
+### 🔐 Testar rota da Consolidation API (via Gateway com token)
+POST {{Gateway_HostAddress}}/report
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "companyAccountId": "b9c9dbf3-9a70-4c7a-9c1f-2e8e8d958d41",
+  "initialDate": "2024-04-01T00:00:00",
+  "endDate": "2024-04-15T23:59:59"
+}
+
+###
+
+### ❌ Testar rota sem token da Consolidation API (deve retornar 401)
+POST {{Gateway_HostAddress}}/report
+

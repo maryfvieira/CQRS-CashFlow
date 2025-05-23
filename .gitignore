@@ -1,0 +1,68 @@
+# Compilação padrão do .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Arquivos de build do Rider e VS Code
+.idea/
+.vscode/
+*.sln.iml
+
+# Arquivos de log e temporários
+*.log
+*.tmp
+*.temp
+
+# Diretórios de publicação
+publish/
+out/
+
+# Pacotes NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Configurações locais
+*.vs/
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Testes e cobertura
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Dados de debug
+*.pdb
+*.mdb
+
+# Docker
+**/docker-compose.override.yml
+**/.dockerignore
+
+# Redis ou arquivos temporários de cache
+*.redis
+dump.rdb
+
+# MongoDB dump
+*.bson
+*.json
+*.lock
+
+# MySQL dump
+*.sql
+
+# Segredos (se estiverem versionados por engano)
+secrets.json
+appsettings.Local.json
+appsettings.Development.json
+.env
+.env.*
+
+# Ignore diretórios gerados por ferramentas de benchmark ou análise
+BenchmarkDotNet.Artifacts/

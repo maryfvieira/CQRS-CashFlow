@@ -41,13 +41,38 @@ public class Program
     public static async Task Main(string[] args)
     {
         var builder = Host.CreateApplicationBuilder(args);
-        
-        builder.Configuration.Sources.Clear(); 
+    
+        builder.Configuration.Sources.Clear();
+    
+        var environmentName = builder.Environment.EnvironmentName;
+        var envSpecificFileName = $"appsettings.{environmentName}.json";
+        var envSpecificPath = Path.Combine(Directory.GetCurrentDirectory(), envSpecificFileName);
+
+        // Carrega apenas UM arquivo de configuração principal
+        if (File.Exists(envSpecificPath))
+        {
+            builder.Configuration
+                .AddJsonFile(envSpecificFileName, optional: false, reloadOnChange: true);
+        }
+        else
+        {
+            builder.Configuration
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+        }
+
+        // Configurações adicionais (mantemos as variáveis de ambiente)
         builder.Configuration
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
             .AddEnvironmentVariables();
+        
+        
+        // var builder = Host.CreateApplicationBuilder(args);
+        //
+        // builder.Configuration.Sources.Clear(); 
+        // builder.Configuration
+        //     .SetBasePath(Directory.GetCurrentDirectory())
+        //     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        //     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+        //     .AddEnvironmentVariables();
         
         // Configurações
         builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection(RabbitMqSettings.SectionName));

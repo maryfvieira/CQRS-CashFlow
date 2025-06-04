@@ -10,7 +10,7 @@ public class AppSettingsFixture
     {
         Configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory()) // ou usar AppContext.BaseDirectory
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("appsettings.Production.json", optional: false, reloadOnChange: true)
             .Build();
     }
 }

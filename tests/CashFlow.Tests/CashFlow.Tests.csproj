@@ -34,15 +34,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CashFlow.ApiGateway\CashFlow.ApiGateway.csproj" />
-    <ProjectReference Include="..\..\CashFlow.Application\CashFlow.Application.csproj" />
-    <ProjectReference Include="..\..\CashFlow.ConsolidationApi\CashFlow.ConsolidationApi.csproj" />
-    <ProjectReference Include="..\..\CashFlow.CrossCutting\CashFlow.CrossCutting.csproj" />
-    <ProjectReference Include="..\..\CashFlow.DataBase\CashFlow.DataBase.csproj" />
-    <ProjectReference Include="..\..\CashFlow.Identity\CashFlow.Identity.csproj" />
-    <ProjectReference Include="..\..\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\CashFlow.TransactionsApi\CashFlow.TransactionsApi.csproj" />
-    <ProjectReference Include="..\..\CashFlow.TransactionsExecutor\CashFlow.TransactionsExecutor.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.Application\CashFlow.Application.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.ConsolidationApi\CashFlow.ConsolidationApi.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.CrossCutting\CashFlow.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.DataBase\CashFlow.DataBase.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.Domain\CashFlow.Domain.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.Identity\CashFlow.Identity.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.TransactionsApi\CashFlow.TransactionsApi.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.TransactionsExecutor\CashFlow.TransactionsExecutor.csproj" />
   </ItemGroup>
 
   <ItemGroup>

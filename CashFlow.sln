@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.ConsolidationApi", "CashFlow.ConsolidationApi\CashFlow.ConsolidationApi.csproj", "{23E86007-8160-4DE0-850E-66379AB89673}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.ConsolidationApi", "src\CashFlow.ConsolidationApi\CashFlow.ConsolidationApi.csproj", "{23E86007-8160-4DE0-850E-66379AB89673}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Application", "CashFlow.Application\CashFlow.Application.csproj", "{D98E8F23-1D5D-4D60-A63A-A9B548C99E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{D98E8F23-1D5D-4D60-A63A-A9B548C99E96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Domain", "CashFlow.Domain\CashFlow.Domain.csproj", "{314D1C18-EA31-443D-9423-A7F27843BEBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Domain", "src\CashFlow.Domain\CashFlow.Domain.csproj", "{314D1C18-EA31-443D-9423-A7F27843BEBF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Infrastructure", "CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{C3902B3A-B2FE-44D1-BDC2-B41625515E61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{C3902B3A-B2FE-44D1-BDC2-B41625515E61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.TransactionsApi", "CashFlow.TransactionsApi\CashFlow.TransactionsApi.csproj", "{73229C7C-8023-4AFA-98A9-944924AE998E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.TransactionsApi", "src\CashFlow.TransactionsApi\CashFlow.TransactionsApi.csproj", "{73229C7C-8023-4AFA-98A9-944924AE998E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.ApiGateway", "CashFlow.ApiGateway\CashFlow.ApiGateway.csproj", "{535296BA-02DA-4426-BC1F-9CF187FD61E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.ApiGateway", "src\CashFlow.ApiGateway\CashFlow.ApiGateway.csproj", "{535296BA-02DA-4426-BC1F-9CF187FD61E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Identity", "CashFlow.Identity\CashFlow.Identity.csproj", "{DED5C5D5-B496-4DE9-94ED-16DA4DD75923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Identity", "src\CashFlow.Identity\CashFlow.Identity.csproj", "{DED5C5D5-B496-4DE9-94ED-16DA4DD75923}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.TransactionsExecutor", "CashFlow.TransactionsExecutor\CashFlow.TransactionsExecutor.csproj", "{66544041-338E-4F1A-A279-138EABE69E64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.TransactionsExecutor", "src\CashFlow.TransactionsExecutor\CashFlow.TransactionsExecutor.csproj", "{66544041-338E-4F1A-A279-138EABE69E64}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.CrossCutting", "CashFlow.CrossCutting\CashFlow.CrossCutting.csproj", "{9E4C039A-CE5E-4DE5-9278-4518F74A2C0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.CrossCutting", "src\CashFlow.CrossCutting\CashFlow.CrossCutting.csproj", "{9E4C039A-CE5E-4DE5-9278-4518F74A2C0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.DataBase", "CashFlow.DataBase\CashFlow.DataBase.csproj", "{40D66BC5-6B21-4FB4-90C7-64EE19BC1A4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.DataBase", "src\CashFlow.DataBase\CashFlow.DataBase.csproj", "{40D66BC5-6B21-4FB4-90C7-64EE19BC1A4D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntryPoints", "EntryPoints", "{763C851F-A93F-4585-914E-6509534569E5}"
 EndProject

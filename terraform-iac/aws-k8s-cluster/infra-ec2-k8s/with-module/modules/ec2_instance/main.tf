@@ -1,26 +1,42 @@
 resource "aws_instance" "this" {
   count                  = var.instance_count
-  ami                    = "ami-0af6e9042ea5a4e3e"
+  ami                    = "ami-0af6e9042ea5a4e3e" # Ubuntu 22.04 LTS sa-east-1
   instance_type          = var.instance_type
   key_name               = var.key_name
   subnet_id              = var.subnet_id
   vpc_security_group_ids = var.security_group_ids
   iam_instance_profile   = var.instance_profile
 
-  user_data = file("${path.module}/scripts/user_data.sh")
-  
   tags = {
     Name = "k8s-node-${count.index}"
   }
 
-  # provisioner "file" {
-  #   source      = "${path.module}/../../scripts/"
-  #   destination = "/root/"
-  #   connection {
-  #     type = "ssh"
-  #     user = "ubuntu"
-  #     private_key = file("~/.ssh/your-key.pem")
-  #     host = self.public_ip
-  #   }
-  # }
+  # Envia todos os scripts para a instância
+  provisioner "file" {
+    source      = "${path.module}/scripts/"
+    destination = "/tmp/"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.ssh/${var.key_name}.pem") # Ajuste o caminho da chave
+      host        = self.public_ip
+    }
+  }
+
+  # Executa a configuração inicial
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mv /tmp/scripts /scripts",
+      "sudo chmod -R +x /scripts",
+      "sudo /scripts/bootstrap_k8s.sh ${count.index} ${var.instance_count} > /var/log/bootstrap.log 2>&1"
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.ssh/${var.key_name}.pem")
+      host        = self.public_ip
+    }
+  }
 }

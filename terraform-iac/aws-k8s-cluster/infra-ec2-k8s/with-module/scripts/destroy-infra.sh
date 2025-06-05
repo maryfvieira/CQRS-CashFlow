@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 read -p "⚠️ Tem certeza que deseja destruir todos os recursos? [s/N]: " confirm
 if [[ ! "$confirm" =~ ^[sS]$ ]]; then

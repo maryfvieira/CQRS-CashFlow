@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -e
+set -ex
+
+cd /Users/mary/sources/dotnet/cashflow-cqrs/terraform-iac/aws-k8s-cluster/infra-ec2-k8s/with-module
 
 ENV_FILE=".env"
 
@@ -14,10 +16,9 @@ export $(grep -v '^#' $ENV_FILE | xargs)
 
 echo "🚀 Iniciando aplicação da infraestrutura Kubernetes..."
 
-cd /Users/mary/sources/dotnet/cashflow-cqrs/terraform-iac/aws-k8s-cluster/infra-ec2-k8s/with-module
-
 echo "📦 Executando Terraform Init..."
 terraform init
+echo "📦 Executando Terraform validate..."
 terraform validate
 
 echo "⚙️ Aplicando Terraform com tfvars e variáveis de ambiente..."

@@ -28,7 +28,7 @@ resource "aws_instance" "this" {
       "sudo rm -rf /scripts",
       "sudo mv /tmp/scripts /scripts",
       "sudo chmod -R +x /scripts",
-      "sudo ${path.module}/scripts/bootstrap_k8s.sh ${count.index} ${var.instance_count} > /var/log/bootstrap.log 2>&1"
+      "sudo /scripts/bootstrap_k8s.sh ${count.index} ${var.instance_count} > /var/log/bootstrap.log 2>&1"
     ]
 
     connection {

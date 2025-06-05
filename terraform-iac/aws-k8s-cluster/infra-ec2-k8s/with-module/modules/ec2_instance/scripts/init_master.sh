@@ -12,8 +12,15 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 # Instalar rede Flannel
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
+# Espera apiserver
+sleep 15
+kubectl get nodes
+
 # Gerar comando join
 JOIN_CMD=$(kubeadm token create --print-join-command)
+
+# Limpar parametro antigo
+aws ssm delete-parameter --name "/k8s/join-command" --region sa-east-1 || true
 
 # Armazenar comando no SSM
 aws ssm put-parameter \

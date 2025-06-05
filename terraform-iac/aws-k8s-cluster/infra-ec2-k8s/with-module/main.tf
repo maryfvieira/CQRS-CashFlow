@@ -24,5 +24,5 @@ module "ec2_instance" {
   security_group_ids      = [module.security_group.sg_id]
   instance_profile        = module.iam.instance_profile
   private_key_path        = var.private_key_path
-  depends_on = [module.iam]
+  depends_on              = [module.iam]
 }

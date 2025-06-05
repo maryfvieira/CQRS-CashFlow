@@ -23,4 +23,6 @@ module "ec2_instance" {
   subnet_id               = module.network.subnet_id
   security_group_ids      = [module.security_group.sg_id]
   instance_profile        = module.iam.instance_profile
+  private_key_path        = var.private_key_path
+  depends_on = [module.iam]
 }

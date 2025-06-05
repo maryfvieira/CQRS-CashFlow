@@ -8,10 +8,21 @@ if [[ ! "$confirm" =~ ^[sS]$ ]]; then
   exit 1
 fi
 
-# Destruir recursos Terraform
-terraform destroy -auto-approve
+ENV_FILE=".env"
 
-# Limpar arquivos de estado
-rm -rf .terraform/ terraform.tfstate terraform.tfstate.backup
+if [ ! -f "$ENV_FILE" ]; then
+  echo "❌ Arquivo .env não encontrado. Crie um antes de destruir a infraestrutura."
+  exit 1
+fi
 
-echo "✅ Todos os recursos foram destruídos!"
+echo "🔄 Carregando variáveis de ambiente do .env..."
+export $(grep -v '^#' $ENV_FILE | xargs)
+
+cd /Users/mary/sources/dotnet/cashflow-cqrs/terraform-iac/aws-k8s-cluster/infra-ec2-k8s/with-module
+
+echo "🚨 Destruindo infraestrutura com Terraform..."
+
+terraform init
+terraform destroy -var-file=terraform.tfvars -auto-approve
+
+echo "✅ Infraestrutura destruída com sucesso."

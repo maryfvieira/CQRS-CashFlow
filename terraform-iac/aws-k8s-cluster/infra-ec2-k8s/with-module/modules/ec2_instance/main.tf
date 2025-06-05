@@ -1,6 +1,6 @@
 resource "aws_instance" "this" {
   count                  = var.instance_count
-  ami                    = "ami-0af6e9042ea5a4e3e" # Ubuntu 22.04 LTS sa-east-1
+  ami                    = "ami-0af6e9042ea5a4e3e"
   instance_type          = var.instance_type
   key_name               = var.key_name
   subnet_id              = var.subnet_id
@@ -11,7 +11,6 @@ resource "aws_instance" "this" {
     Name = "k8s-node-${count.index}"
   }
 
-  # Envia todos os scripts para a instância
   provisioner "file" {
     source      = "${path.module}/scripts/"
     destination = "/tmp/"
@@ -19,12 +18,11 @@ resource "aws_instance" "this" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("~/.ssh/${var.key_name}.pem") # Ajuste o caminho da chave
+      private_key = file(var.private_key_path)
       host        = self.public_ip
     }
   }
 
-  # Executa a configuração inicial
   provisioner "remote-exec" {
     inline = [
       "sudo mv /tmp/scripts /scripts",
@@ -35,7 +33,7 @@ resource "aws_instance" "this" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("~/.ssh/${var.key_name}.pem")
+      private_key = file(var.private_key_path)
       host        = self.public_ip
     }
   }

@@ -1,28 +1,27 @@
 #!/bin/bash
+
 set -e
 
-cd "$(dirname "$0")/.."
+ENV_FILE=".env"
 
-source .env
-
-if [ -z "$AWS_REGION" ] || [ -z "$SSH_KEY_NAME" ]; then
-  echo "Erro: variáveis AWS_REGION ou SSH_KEY_NAME não definidas no .env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "❌ Arquivo .env não encontrado. Crie um antes de aplicar a infraestrutura."
   exit 1
 fi
 
-declare -a REQUIRED_COMMANDS=("terraform" "aws" "ssh")
-for cmd in "${REQUIRED_COMMANDS[@]}"; do
-  if ! command -v $cmd &> /dev/null; then
-    echo "Erro: $cmd não está instalado!"
-    exit 1
-  fi
-done
+echo "🔄 Carregando variáveis de ambiente do .env..."
+export $(grep -v '^#' $ENV_FILE | xargs)
 
+echo "🚀 Iniciando aplicação da infraestrutura Kubernetes..."
+
+cd /Users/mary/sources/dotnet/cashflow-cqrs/terraform-iac/aws-k8s-cluster/infra-ec2-k8s/with-module
+
+echo "📦 Executando Terraform Init..."
 terraform init
 terraform validate
-terraform apply -auto-approve \
-  -var="region=$AWS_REGION" \
-  -var="key_name=$SSH_KEY_NAME"
 
-echo "✅ Infraestrutura criada!"
-terraform output
+echo "⚙️ Aplicando Terraform com tfvars e variáveis de ambiente..."
+terraform apply -var-file=terraform.tfvars -auto-approve
+
+echo "✅ Infraestrutura provisionada com sucesso!"
+

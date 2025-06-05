@@ -6,3 +6,4 @@ variable "security_group_ids" {
   type = list(string)
 }
 variable "instance_profile" {}
+variable "private_key_path" {}

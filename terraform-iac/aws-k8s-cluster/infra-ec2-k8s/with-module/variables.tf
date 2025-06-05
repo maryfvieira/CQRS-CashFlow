@@ -27,3 +27,6 @@ variable "key_name" {
   description = "Nome da chave SSH"
   default     = "k8s-cluster-key"
 }
+variable "private_key_path" {
+  description = "Caminho para a chave privada SSH"
+}

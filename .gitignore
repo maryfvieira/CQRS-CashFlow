@@ -76,37 +76,36 @@ BenchmarkDotNet.Artifacts/
 *.terraform.lock.hcl
 
 # Diretório de plugins e módulos do Terraform
-*/.terraform/
-**/.terraform.lock.hcl
+**/.terraform/
+**/*.terraform.lock.hcl
 
 # Arquivos de plano do Terraform
-*.tfplan
-*.plan
-
+**/*.plan
+**/*tfplan*
 # Arquivos de override do Terraform
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
+**/override.tf
+**/override.tf.json
+**/*_override.tf
+**/*_override.tf.json
 
 # Arquivos de variáveis sensíveis
-*.auto.tfvars
-*.tfvars
-variables.tfvars
-secrets.tfvars
+**/*.auto.tfvars
+**/*.tfvars
+**/variables.tfvars
+**/secrets.tfvars
 
 # Arquivos de configuração local
-terraform.rc
-.terraformrc
+**/terraform.rc
+**/.terraformrc
 
 # Logs e arquivos temporários
-*.log
-*.tmp
-*.bak
+**/*.log
+**/*.tmp
+**/*.bak
 
 # Arquivos específicos de IDEs
-.idea/
-.vscode/
+**/.idea/
+**/.vscode/
 *.code-workspace
 
 # Arquivos de ambiente
@@ -117,12 +116,6 @@ terraform.rc
 .aws/
 aws_config
 credentials
-
-# SSH Keys
-*.pem
-*.ppk
-id_rsa
-id_dsa
 
 # Packer (se usado junto)
 packer_cache/
@@ -142,7 +135,7 @@ Desktop.ini
 .terragrunt-cache/
 
 # Arquivos de saída gerados por módulos
-output/
+**/output/
 
 # Arquivos de providers locais
-*.terraform_providers
+**/*.terraform_providers

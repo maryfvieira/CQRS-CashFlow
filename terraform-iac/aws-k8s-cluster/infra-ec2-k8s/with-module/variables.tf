@@ -15,7 +15,7 @@ variable "subnet_cidr" {
 
 variable "instance_count" {
   description = "Número de instâncias EC2"
-  default     = 2
+  default     = 3
 }
 
 variable "instance_type" {

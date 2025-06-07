@@ -9,3 +9,7 @@ output "worker_ips" {
 output "ssh_command" {
   value = "ssh -i ~/.ssh/${var.key_name} ubuntu@${aws_instance.this[0].public_ip}"
 }
+
+output "instance_public_dns" {
+  value = aws_instance.this[*].public_dns
+}

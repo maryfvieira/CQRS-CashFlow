@@ -66,3 +66,83 @@ appsettings.Development.json
 
 # Ignore diretórios gerados por ferramentas de benchmark ou análise
 BenchmarkDotNet.Artifacts/
+
+# Arquivos de estado do Terraform
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Arquivos de lock do Terraform
+*.terraform.lock.hcl
+
+# Diretório de plugins e módulos do Terraform
+*/.terraform/
+**/.terraform.lock.hcl
+
+# Arquivos de plano do Terraform
+*.tfplan
+*.plan
+
+# Arquivos de override do Terraform
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Arquivos de variáveis sensíveis
+*.auto.tfvars
+*.tfvars
+variables.tfvars
+secrets.tfvars
+
+# Arquivos de configuração local
+terraform.rc
+.terraformrc
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.bak
+
+# Arquivos específicos de IDEs
+.idea/
+.vscode/
+*.code-workspace
+
+# Arquivos de ambiente
+.env
+*.env
+
+# AWS CLI e credenciais
+.aws/
+aws_config
+credentials
+
+# SSH Keys
+*.pem
+*.ppk
+id_rsa
+id_dsa
+
+# Packer (se usado junto)
+packer_cache/
+*.manifest.json
+
+# Arquivos específicos do Windows
+Thumbs.db
+Desktop.ini
+
+# Arquivos de backup gerados por editores
+*~
+*#
+.#*
+.*.swp
+
+# Arquivos de configuração do Terragrunt (se usado)
+.terragrunt-cache/
+
+# Arquivos de saída gerados por módulos
+output/
+
+# Arquivos de providers locais
+*.terraform_providers
